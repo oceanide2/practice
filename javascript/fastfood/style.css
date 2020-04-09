@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+/* reset */
+body,
+ul,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* commons */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+}
+
+/* layouts */
+.l_wrapper {
+  width: 700px;
+  margin: 0 auto;
+}
+
+/* components */
+.header {
+  overflow: hidden;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  padding: 20px;
+  font-weight: bold;
+  background-color: #7e819a;
+  color: white;
+}
+
+.header-title {
+  float: left;
+}
+
+.search {
+  float: right;
+}
+
+.search-text {
+  border: none;
+  padding: 6px;
+  width: 300px;
+}
+
+.search-button {
+  border: none;
+  padding: 6px;
+  width: 50px;
+}
+
+.contents {
+  border-radius: 4px;
+}
+
+.contents-title {
+  font-size: 1rem;
+  margin: 20px;
+}
+
+.stores {
+  font-size: 1rem;
+  counter-reset: store-id-counter;
+}
+
+.store {
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  counter-increment: store-id-counter;
+  /* position: relative; */
+  color: #aaa;
+  height: 90px;
+}
+
+.store:before {
+  content: counter(store-id-counter);
+  /* position: absolute;
+  top: 50%;
+  transform: translateY(-50%); */
+  font-size: 2rem;
+  padding: 0 0.8em;
+  color: #aaa;
+  display: inline-block;
+}
+
+.store-info {
+  /* padding: 20px 20px 20px 80px; */
+  padding: 20px 0;
+  display: inline-block;
+}
+
+.store-name {
+  font-weight: bold;
+  color: #222;
+}
