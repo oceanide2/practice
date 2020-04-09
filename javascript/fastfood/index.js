@@ -56,8 +56,13 @@ async function getData() {
   }
 }
 
-function init() {
+function handleSearchButton() {
   getData();
+}
+
+function init() {
+  const search_button = document.querySelector('.search-button');
+  search_button.addEventListener('click', handleSearchButton);
 }
 
 init();
