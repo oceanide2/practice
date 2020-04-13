@@ -66,9 +66,19 @@ function handleSearchButton() {
   search(url);
 }
 
+function handleEnterKey(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    handleSearchButton();
+  }
+}
+
 function init() {
   const search_button = document.querySelector('.search-button');
   search_button.addEventListener('click', handleSearchButton);
+
+  const input_text = document.querySelector('.search-text');
+  input_text.addEventListener('keydown', handleEnterKey);
 }
 
 init();
