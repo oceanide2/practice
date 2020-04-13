@@ -84,11 +84,15 @@ body {
   padding: 0 0.8em;
   color: #aaa;
   display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 50px;
 }
 
 .store-info {
   padding: 20px 0;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .store-name {
