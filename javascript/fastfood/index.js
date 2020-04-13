@@ -25,8 +25,8 @@ function displayData(data) {
   const title = document.querySelector('.contents-title');
   title.innerHTML = `총 ${total}개의 패스트푸드점을 찾았습니다.`;
 
-  const ul_stores = document.createElement('ul');
-  ul_stores.classList.add('stores');
+  const ul_stores = document.querySelector('.stores');
+  ul_stores.innerHTML = '';
 
   stores.forEach((store) => {
     const list = makeStoreList(store.name, store.addr);
@@ -37,9 +37,7 @@ function displayData(data) {
   contents.appendChild(ul_stores);
 }
 
-function fetchData() {
-  const url = 'http://floating-harbor-78336.herokuapp.com/fastfood';
-
+function fetchData(url) {
   return fetch(url).then((rsp) => {
     if (rsp.status === 200) {
       return rsp.json();
@@ -47,9 +45,9 @@ function fetchData() {
   });
 }
 
-async function getData() {
+async function search(url) {
   try {
-    const stores = await fetchData();
+    const stores = await fetchData(url);
     displayData(stores);
   } catch (err) {
     console.log('ERROR: ', err);
@@ -57,7 +55,15 @@ async function getData() {
 }
 
 function handleSearchButton() {
-  getData();
+  const url = new URL('http://floating-harbor-78336.herokuapp.com/fastfood');
+
+  const searchKeyword = document.querySelector('.search-text').value;
+  const params = { page: 1, perPage: 10, searchKeyword };
+
+  Object.keys(params).forEach((key) => {
+    return url.searchParams.append(key, params[key]);
+  });
+  search(url);
 }
 
 function init() {
