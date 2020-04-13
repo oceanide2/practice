@@ -32,9 +32,6 @@ function displayData(data) {
     const list = makeStoreList(store.name, store.addr);
     ul_stores.appendChild(list);
   });
-
-  const contents = document.querySelector('.contents');
-  contents.appendChild(ul_stores);
 }
 
 function fetchData(url) {
