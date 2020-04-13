@@ -80,9 +80,6 @@ body {
 
 .store:before {
   content: counter(store-id-counter);
-  /* position: absolute;
-  top: 50%;
-  transform: translateY(-50%); */
   font-size: 2rem;
   padding: 0 0.8em;
   color: #aaa;
@@ -90,7 +87,6 @@ body {
 }
 
 .store-info {
-  /* padding: 20px 20px 20px 80px; */
   padding: 20px 0;
   display: inline-block;
 }
