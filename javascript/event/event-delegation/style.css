@@ -1,0 +1,64 @@
+/* reset */
+body,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  background-color: #f0f0f0;
+  font-family: arial, sans-serif;
+  color: #999;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* layout */
+.l_wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* component */
+.header {
+  background-color: #0063a6;
+  overflow: hidden;
+}
+
+.header-menu {
+  background-color: #0090d2;
+  overflow: hidden;
+}
+
+.header-menu li {
+  float: left;
+}
+
+.header-menu li a {
+  display: block;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  font-size: 14px;
+}
+
+.header-menu li a:hover {
+  background-color: #33a6db;
+  color: #fff;
+}
+
+.header-menu li a.is_active {
+  background-color: #fff;
+  color: #333;
+}
