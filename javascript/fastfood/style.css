@@ -12,6 +12,11 @@ li {
   list-style-type: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* commons */
 body {
   font-family: 'Noto Sans KR', sans-serif;
@@ -57,6 +62,7 @@ body {
 
 .contents {
   border-radius: 4px;
+  padding-bottom: 20px;
 }
 
 .contents-title {
@@ -98,4 +104,23 @@ body {
 .store-name {
   font-weight: bold;
   color: #222;
+}
+
+.paging {
+  font-size: 0.9rem;
+  text-align: center;
+  color: #aaa;
+}
+
+.paging a {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+}
+
+.paging .active {
+  color: #222;
+  font-size: 1rem;
+  font-weight: bold;
 }

@@ -42,25 +42,87 @@ function fetchData(url) {
   });
 }
 
-async function search(url) {
+async function searchStores(page = 1, perPage = 10, searchKeyword = '') {
+  const url = new URL('http://floating-harbor-78336.herokuapp.com/fastfood');
+
+  const params = { page, perPage, searchKeyword };
+  Object.keys(params).forEach((key) => {
+    return url.searchParams.append(key, params[key]);
+  });
+
   try {
     const stores = await fetchData(url);
     displayData(stores);
+    showPagination({ ...params, total: stores.total });
   } catch (err) {
     console.log('ERROR: ', err);
   }
 }
 
 function handleSearchButton() {
-  const url = new URL('http://floating-harbor-78336.herokuapp.com/fastfood');
-
   const searchKeyword = document.querySelector('.search-text').value;
-  const params = { page: 1, perPage: 10, searchKeyword };
+  searchStores(1, 10, searchKeyword);
+}
 
-  Object.keys(params).forEach((key) => {
-    return url.searchParams.append(key, params[key]);
-  });
-  search(url);
+function showPagination(params) {
+  const { page, perPage, searchKeyword, total } = params;
+
+  const paging = document.querySelector('.paging');
+  paging.innerHTML = '';
+
+  const numPages = 5;
+  const pageStart = Math.floor((page - 1) / numPages) * numPages + 1;
+  let pageEnd = pageStart + numPages - 1;
+  const totalPages = Math.floor((total - 1) / perPage) + 1;
+
+  if (pageEnd > totalPages) {
+    pageEnd = totalPages;
+  }
+
+  let prevPage = pageStart - 1;
+  if (prevPage < 1) {
+    prevPage = 1;
+  }
+
+  let nextPage = pageEnd + 1;
+  if (nextPage > totalPages) {
+    nextPage = totalPages;
+  }
+
+  prevElem = document.createElement('a');
+  prevElem.innerHTML = '이전';
+  prevElem.setAttribute('href', 'javascript:void(0);');
+  prevElem.setAttribute(
+    'onclick',
+    `searchStores(${prevPage}, ${perPage}, '${searchKeyword}');`
+  );
+  prevElem.classList.add('prev');
+  paging.appendChild(prevElem);
+
+  for (let i = pageStart; i <= pageEnd; i++) {
+    const elem = document.createElement('a');
+    elem.innerHTML = `${i}`;
+    elem.setAttribute('href', 'javascript:void(0);');
+    elem.setAttribute(
+      'onclick',
+      `searchStores(${i}, ${perPage}, '${searchKeyword}');`
+    );
+
+    if (i === page) {
+      elem.classList.add('active');
+    }
+    paging.appendChild(elem);
+  }
+
+  nextElem = document.createElement('a');
+  nextElem.innerHTML = '다음';
+  nextElem.setAttribute('href', 'javascript:void(0);');
+  nextElem.setAttribute(
+    'onclick',
+    `searchStores(${nextPage}, ${perPage}, '${searchKeyword}');`
+  );
+  nextElem.classList.add('next');
+  paging.appendChild(nextElem);
 }
 
 function handleEnterKey(event) {
