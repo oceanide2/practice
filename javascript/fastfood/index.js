@@ -1,21 +1,10 @@
 function makeStoreList(name, addr) {
   const li = document.createElement('li');
-  const div_store_info = document.createElement('div');
-  const div_store_name = document.createElement('div');
-  const div_store_addr = document.createElement('div');
-
   li.classList.add('store');
-  div_store_info.classList.add('store-info');
-  div_store_name.classList.add('store-name');
-  div_store_addr.classList.add('store-addr');
-
-  div_store_name.innerHTML = name;
-  div_store_addr.innerHTML = addr;
-
-  div_store_info.appendChild(div_store_name);
-  div_store_info.appendChild(div_store_addr);
-  li.appendChild(div_store_info);
-
+  li.innerHTML = `<div class="store-info">
+                    <div class="store-name">${name}</div>
+                    <div class="store-addr">${addr}</div>
+                  </div>`;
   return li;
 }
 
