@@ -1,65 +1,69 @@
-const lotto = {
-  maxCount: 6,
-  maxValue: 45
-};
+const lotto = (function () {
+  const maxCount = 6;
+  const maxValue = 45;
 
-function getMaxInt(value) {
-  return Math.floor(Math.random() * value);
-}
+  const getMaxInt = function (value) {
+    return Math.floor(Math.random() * value);
+  };
 
-function getNumber(count, value) {
-  const selectedNumber = [];
+  const getNumber = function (count, value) {
+    const selectedNumber = [];
 
-  // make array with incremental value from 1 to value + 1
-  const numberPool = [...Array(value + 1).keys()].map(i => i + 1);
+    // make array with incremental value from 1 to value + 1
+    const numberPool = [...Array(value + 1).keys()].map((i) => i + 1);
 
-  for (let i = 0; i < count; i++) {
-    const index = getMaxInt(numberPool.length);
-    selectedNumber.push(numberPool[index]);
-    numberPool.splice(index, 1);
-  }
+    for (let i = 0; i < count; i++) {
+      const index = getMaxInt(numberPool.length);
+      selectedNumber.push(numberPool[index]);
+      numberPool.splice(index, 1);
+    }
 
-  return selectedNumber;
-}
+    return selectedNumber;
+  };
 
-function printNumber(numbers) {
-  const ball = document.querySelector('.ball');
+  const printNumber = function (numbers) {
+    const ball = document.querySelector('.ball');
 
-  // remove all child nodes
-  while (ball.hasChildNodes()) {
-    ball.removeChild(ball.firstChild);
-  }
+    // remove all child nodes
+    while (ball.hasChildNodes()) {
+      ball.removeChild(ball.firstChild);
+    }
 
-  numbers.forEach(number => {
-    const node = document.createElement('span');
-    node.innerHTML = number;
-    ball.appendChild(node);
-  });
-}
+    numbers.forEach((number) => {
+      const node = document.createElement('span');
+      node.innerHTML = number;
+      ball.appendChild(node);
+    });
+  };
 
-function setButtonHandler() {
-  const lotto_number = getNumber(lotto.maxCount, lotto.maxValue);
-  printNumber(lotto_number);
-}
+  const setButtonHandler = function () {
+    const lotto_number = getNumber(maxCount, maxValue);
+    printNumber(lotto_number);
+  };
 
-function clearButtonHandler() {
-  displayInitNumber(lotto.maxCount);
-}
+  const clearButtonHandler = function () {
+    displayInitNumber(maxCount);
+  };
 
-function displayInitNumber(count) {
-  const initNumber = [...Array(count).keys()].map(i => '-');
-  // const initNumber = Array.from({ length: count }, i => '-');
-  printNumber(initNumber);
-}
+  const displayInitNumber = function (count) {
+    const initNumber = [...Array(count).keys()].map((i) => '-');
+    // const initNumber = Array.from({ length: count }, i => '-');
+    printNumber(initNumber);
+  };
 
-function init() {
-  displayInitNumber(lotto.maxCount);
+  const init = function () {
+    displayInitNumber(maxCount);
 
-  const setButton = document.querySelector('.button.set');
-  const clearButton = document.querySelector('.button.clear');
+    const setButton = document.querySelector('.button.set');
+    const clearButton = document.querySelector('.button.clear');
 
-  setButton.addEventListener('click', setButtonHandler);
-  clearButton.addEventListener('click', clearButtonHandler);
-}
+    setButton.addEventListener('click', setButtonHandler);
+    clearButton.addEventListener('click', clearButtonHandler);
+  };
 
-init();
+  return {
+    init: init,
+  };
+})();
+
+lotto.init();
