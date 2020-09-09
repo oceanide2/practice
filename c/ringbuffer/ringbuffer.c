@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-
 #include "ringbuffer.h"
 
 uint8_t rb_init(ringbuffer_t *rb, uint8_t *buff, size_t size)
