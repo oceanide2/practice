@@ -18,11 +18,11 @@ public class MortgageReport {
         System.out.println("Monthly Payments: " + mortgageFormatted);
     }
 
-     void printPaymentSchedule(byte years) {
+     void printPaymentSchedule() {
         System.out.println();
         System.out.println("PAYMENT SCHEDULE");
         System.out.println("----------------");
-        for (short month = 1; month <= years * Main.MONTHS_IN_YEAR; month++) {
+        for (short month = 1; month <= calculator.getYears() * Main.MONTHS_IN_YEAR; month++) {
             double balance = calculator.calculateBalance(month);
             System.out.println(NumberFormat.getCurrencyInstance().format(balance));
         }

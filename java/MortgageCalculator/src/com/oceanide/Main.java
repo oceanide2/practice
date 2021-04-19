@@ -13,7 +13,7 @@ public class Main {
         var report = new MortgageReport(calculator);
 
         report.printMortgage();
-        report.printPaymentSchedule(years);
+        report.printPaymentSchedule();
     }
 
 }
