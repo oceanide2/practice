@@ -17,7 +17,9 @@ public class MortgageReport {
         System.out.println("PAYMENT SCHEDULE");
         System.out.println("----------------");
         for (short month = 1; month <= years * Main.MONTHS_IN_YEAR; month++) {
-            double balance = MortgageCalculator.calculateBalance(principal, annualInterest, years, month);
+            var calculator = new MortgageCalculator(principal, annualInterest, years);
+
+            double balance = calculator.calculateBalance(month);
             System.out.println(NumberFormat.getCurrencyInstance().format(balance));
         }
     }
