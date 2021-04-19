@@ -3,7 +3,7 @@ package com.oceanide;
 import java.text.NumberFormat;
 
 public class MortgageReport {
-    static void printMortgage(int principal, float annualInterest, byte years) {
+     void printMortgage(int principal, float annualInterest, byte years) {
         var calculator = new MortgageCalculator(principal, annualInterest, years);
 
         double mortgage = calculator.calculateMortgage();
