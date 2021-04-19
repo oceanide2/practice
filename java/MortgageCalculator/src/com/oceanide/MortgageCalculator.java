@@ -1,6 +1,16 @@
 package com.oceanide;
 
 public class MortgageCalculator {
+    private final int principal;
+    private final float annualInterest;
+    private final byte years;
+
+    public MortgageCalculator(int principal, float annualInterest, byte years) {
+        this.principal = principal;
+        this.annualInterest = annualInterest;
+        this.years = years;
+    }
+
     public static double calculateBalance(
             int principal,
             float annualInterest,
