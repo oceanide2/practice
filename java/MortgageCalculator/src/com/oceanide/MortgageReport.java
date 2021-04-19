@@ -4,7 +4,9 @@ import java.text.NumberFormat;
 
 public class MortgageReport {
     static void printMortgage(int principal, float annualInterest, byte years) {
-        double mortgage = MortgageCalculator.calculateMortgage(principal, annualInterest, years);
+        var calculator = new MortgageCalculator(principal, annualInterest, years);
+
+        double mortgage = calculator.calculateMortgage();
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println();
         System.out.println("MORTGAGE");
