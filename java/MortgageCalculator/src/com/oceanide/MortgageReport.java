@@ -9,7 +9,7 @@ public class MortgageReport {
         this.calculator = calculator;
     }
 
-    void printMortgage(int principal, float annualInterest, byte years) {
+    void printMortgage() {
         double mortgage = calculator.calculateMortgage();
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println();
@@ -18,7 +18,7 @@ public class MortgageReport {
         System.out.println("Monthly Payments: " + mortgageFormatted);
     }
 
-     void printPaymentSchedule(int principal, float annualInterest, byte years) {
+     void printPaymentSchedule(byte years) {
         System.out.println();
         System.out.println("PAYMENT SCHEDULE");
         System.out.println("----------------");

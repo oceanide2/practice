@@ -12,8 +12,8 @@ public class Main {
         var calculator = new MortgageCalculator(principal, annualInterest, years);
         var report = new MortgageReport(calculator);
 
-        report.printMortgage(principal, annualInterest, years);
-        report.printPaymentSchedule(principal, annualInterest, years);
+        report.printMortgage();
+        report.printPaymentSchedule(years);
     }
 
 }
