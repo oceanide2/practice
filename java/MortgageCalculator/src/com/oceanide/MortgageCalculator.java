@@ -53,8 +53,4 @@ public class MortgageCalculator {
     private int getNumberOfPayments() {
         return years * MONTHS_IN_YEAR;
     }
-
-    public byte getYears() {
-        return years;
-    }
 }
