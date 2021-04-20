@@ -25,6 +25,16 @@ public class MortgageCalculator {
         return balance;
     }
 
+    public double[] getBalances() {
+        var balances = new double[getNumberOfPayments()];
+
+        for (short month = 1; month <= balances.length; month++) {
+            balances[month - 1] = calculateBalance(month);
+        }
+
+        return balances;
+    }
+
     public double calculateMortgage() {
         float monthlyInterest = getMonthlyInterest();
         float numberOfPayments = getNumberOfPayments();
