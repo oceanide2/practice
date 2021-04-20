@@ -1,8 +1,8 @@
 package com.oceanide;
 
 public class MortgageCalculator {
-    final static byte MONTHS_IN_YEAR = 12;
-    final static byte PERCENT = 100;
+    private final byte MONTHS_IN_YEAR = 12;
+    private final byte PERCENT = 100;
 
     private final int principal;
     private final float annualInterest;
